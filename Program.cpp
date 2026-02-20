@@ -22,6 +22,8 @@ public:
 		width = w;
 		UpdateArea();
 	}
+	int GetWidth();
+	int GetLength();
 
 	int GetArea() {
 		return area;
@@ -44,3 +46,14 @@ int main() {
 
 }
 
+
+
+int Rectangle::GetWidth()
+{
+	return width;
+}
+
+
+int Rectangle::GetLength() {
+	return length;
+}
