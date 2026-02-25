@@ -6,12 +6,12 @@
 class Piece
 {
 private:
-	Color _color;
 
 protected:
+	Color _color;
 	Position _location;
 
-	Piece(Color c);
+	//Piece(Color c);
 
 public:
 	Position GetLocation();

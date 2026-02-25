@@ -1,7 +1,9 @@
 #include "King.h"
+#include <cmath>
 
-King::King(Color c) : Piece(c) {
+King::King(Color c) { //}: Piece(c) {
 	//TODO: Add freestyle nonsense later
+	_color = c;
 
 	if (c == Color::White) {
 		_location = { 'e', 1 };
@@ -15,5 +17,24 @@ King::King(Color c) : Piece(c) {
 
 bool King::Move(Position target)
 {
+	if (target.Rank > 8 || target.Rank < 1) {
+		return false;
+	}
+	if (target.File > 'h' || target.File < 'a') {
+		return false;
+	}
+	// if abs
+
+	if (abs(_location.File - target.File) == 1)
+	{
+		if (abs(_location.Rank - target.Rank) == 1) 
+		{
+			_location = target;
+			return true;
+		}
+	}
+
+
+
 	return false;
 }

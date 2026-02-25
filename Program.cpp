@@ -7,6 +7,7 @@
 #include "King.h"
 #include "Color.h"
 #include "Position.h"
+#include "Board.h"
 
 using namespace std;
 
@@ -17,14 +18,13 @@ void Move(Piece* p) {
 }
 
 
-
 //cin.ignore()
 
 int main() {
-	King* king = nullptr;
-	king = new King(Color::White);
 
-	Move(king);
+	Board b;
+
+	cout << b.ToString();
 
 }
 

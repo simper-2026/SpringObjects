@@ -5,8 +5,8 @@ Position Piece::GetLocation()
     return _location;
 }
 
-Piece::Piece(Color c)
-{
-    _color = c;
-    _location = { 'a', -1 };
-}
+//Piece::Piece(Color c)
+//{
+//    _color = c;
+//    _location = { 'a', -1 };
+//}
