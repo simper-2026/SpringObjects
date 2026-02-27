@@ -3,6 +3,7 @@
 #include "Piece.h"
 #include <vector>
 #include "King.h"
+#include "Queen.h"
 #include <string>
 
 class Board 

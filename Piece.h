@@ -2,6 +2,8 @@
 
 #include "Position.h"
 #include "Color.h"
+#include <string>
+
 
 class Piece
 {
@@ -16,6 +18,7 @@ protected:
 public:
 	Position GetLocation();
 	virtual bool Move(Position target) = 0;
+	virtual std::string ToString() = 0;
 
 };
 

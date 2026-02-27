@@ -1,5 +1,6 @@
 #include "King.h"
 #include <cmath>
+#include <string>
 
 King::King(Color c) { //}: Piece(c) {
 	//TODO: Add freestyle nonsense later
@@ -38,3 +39,9 @@ bool King::Move(Position target)
 
 	return false;
 }
+
+std::string King::ToString() 
+{
+	return _color == Color::White ? "K" : "k";
+}
+

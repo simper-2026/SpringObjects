@@ -2,11 +2,14 @@
 
 Board::Board()
 {
-	King * wKing = new King(Color::White);
-	King * bKing = new King(Color::Black);
+	pieces = {
+		new King(Color::White),
+		new King(Color::Black),
+		new Queen(Color::White),
+		new Queen(Color::Black),
+	};
 
-	pieces.push_back(wKing);
-	pieces.push_back(bKing);
+
 }
 
 bool Board::Move(Position start, Position end)
@@ -27,26 +30,27 @@ std::string Board::ToString()
 		else {
 			retval += std::to_string(r) + " ";
 		}
-		for (char f = 'a'; f <= 'h'; f++) 
+		for (char f = 'a'; f <= 'h'; f++)
 		{
 			if (r == 9) {
 				retval += f;
 				retval += ' ';
+				continue;
 			}
-			else {
-				bool found = false;
-				for(auto p : pieces)
-				{	
-					auto l = p->GetLocation();
-					if (l.Rank == r && l.File == f) {
-						retval += "k";
-						found = true;
-					}
+
+			bool found = false;
+			for (auto p : pieces)
+			{
+				auto l = p->GetLocation();
+				if (l.Rank == r && l.File == f) {
+					retval += p->ToString();
+					found = true;
 				}
-				if (!found)
-					retval += " ";
-				retval += " ";
 			}
+			if (!found)
+				retval += " ";
+			retval += " ";
+
 		}
 		retval += '\n';
 	}

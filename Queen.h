@@ -1,18 +1,17 @@
 #pragma once
 #include "Piece.h"
-
 #include <string>
 
-class King : public Piece
+
+class Queen : public Piece
 {
 private:
-	
+
 protected:
 
 public:
-	King(Color c);
+	Queen(Color c);
 	virtual bool Move(Position target);
 	virtual std::string ToString();
 
 };
-
