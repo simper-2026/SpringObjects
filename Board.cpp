@@ -14,8 +14,21 @@ Board::Board()
 
 bool Board::Move(Position start, Position end)
 {
+	Piece* pieceToMove = nullptr;
 
-	return false;
+	for (size_t i = 0; i < pieces.size(); i++)
+	{
+		auto currentLocation = pieces[i]->GetLocation();
+		if (currentLocation.File == start.File &&
+			currentLocation.Rank == start.Rank) 
+		{
+			pieceToMove = pieces[i];
+		}
+	}
+	if (pieceToMove == nullptr)
+		return false;
+
+	return pieceToMove->Move(end);
 }
 
 std::string Board::ToString()

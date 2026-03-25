@@ -24,15 +24,14 @@ bool King::Move(Position target)
 	if (target.File > 'h' || target.File < 'a') {
 		return false;
 	}
-	// if abs
 
-	if (abs(_location.File - target.File) == 1)
+	int deltaF = abs(_location.File - target.File);
+	int deltaR = abs(_location.Rank - target.Rank);
+
+	if (deltaF <= 1 && deltaR <= 1 && (deltaF + deltaR > 0))
 	{
-		if (abs(_location.Rank - target.Rank) == 1) 
-		{
-			_location = target;
-			return true;
-		}
+		_location = target;
+		return true;
 	}
 
 
@@ -40,7 +39,7 @@ bool King::Move(Position target)
 	return false;
 }
 
-std::string King::ToString() 
+std::string King::ToString()
 {
 	return _color == Color::White ? "K" : "k";
 }

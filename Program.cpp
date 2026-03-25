@@ -18,26 +18,27 @@ void Move(Piece* p) {
 }
 
 
-#include <iostream>
-#include <thread>
-#include <chrono>
-
-void printLoop(int id, int delayMs) {
-    for (int i = 1; i <= 20; i++) {
-        //std::cout << "Thread " << id << " - loop " << i << " (before sleep) - " << (i - 1)*delayMs << " ms\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(delayMs));
-        std::cout << "Thread " << id << " - loop " << i << " - " << i * delayMs << " ms\n";
-    }
-}
 
 int main() {
-    std::thread t1(printLoop, 1, 300);  // sleeps 300ms each iteration
-    std::thread t2(printLoop, 2, 500);  // sleeps 500ms each iteration
 
-    t1.join();
-    t2.join();
+	Board b;
 
-    std::cout << "Both threads finished\n";
-    return 0;
+	//cout << b.ToString();
+
+	Position q1 = { 'e', 1 };
+	Position q2 = { 'e', 2 };
+
+	bool didMove = b.Move(q1, q1);
+
+	cout << "This should be 0 = " << didMove << endl;
+
+	b.Move(q1, q2);
+
+	cout << b.ToString();
+	
+	b.Move(q2, {'f', 3});
+
+	cout << b.ToString();
+
 }
 
