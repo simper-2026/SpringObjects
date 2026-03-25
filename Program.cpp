@@ -22,9 +22,15 @@ void Move(Piece* p) {
 
 int main() {
 
-	Board b;
+	/*Board b;
 
-	cout << b.ToString();
+	cout << b.ToString();*/
+
+
+	vector<int> a;
+
+	cout << a.max_size();
+
 
 }
 
