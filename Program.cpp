@@ -18,8 +18,30 @@ void Move(Piece* p) {
 }
 
 
+void DevTests();
+void PlayGame();
+
 
 int main() {
+	DevTests();
+	PlayGame();
+}
+
+void PlayGame() {
+	Board b;
+	cout << b.ToString();
+	// TODO: Tell whos turn
+	cout << "Where do you want to move? (e1 e2)";
+	string input;
+	getline(cin, input);
+	Position start = { input[0], input[1] - '0'};
+	Position end = { input[3], input[4] - '0'};
+	b.Move(start, end);
+	cout << b.ToString();
+}
+
+void DevTests()
+{
 
 	Board b;
 
@@ -30,15 +52,25 @@ int main() {
 
 	bool didMove = b.Move(q1, q1);
 
-	cout << "This should be 0 = " << didMove << endl;
+	if (didMove) {
+		cout << "This should be 0 = " << didMove << endl;
+		cout << "It's not valid for the king to stay on the same spot\n";
+		cout << "FAIL\n";
+		return;
+	}
 
 	b.Move(q1, q2);
-
-	cout << b.ToString();
+	//cout << b.ToString();
 	
-	b.Move(q2, {'f', 3});
 
-	cout << b.ToString();
+	bool whitKingTwice = b.Move(q2, {'f', 3});
+	if (whitKingTwice) {
+		cout << "FAIL\n";
+		cout << "White can't move twice in a row\n";
+		return;
+	}
+
+
 
 }
 

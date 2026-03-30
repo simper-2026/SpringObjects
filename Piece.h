@@ -19,6 +19,6 @@ public:
 	Position GetLocation();
 	virtual bool Move(Position target) = 0;
 	virtual std::string ToString() = 0;
-
+	Color GetColor();
 };
 

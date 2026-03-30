@@ -9,6 +9,7 @@ Board::Board()
 		new Queen(Color::Black),
 	};
 
+	currentTurn = Color::White;
 
 }
 
@@ -27,8 +28,16 @@ bool Board::Move(Position start, Position end)
 	}
 	if (pieceToMove == nullptr)
 		return false;
+	if (pieceToMove->GetColor() != currentTurn)
+		return false;
 
-	return pieceToMove->Move(end);
+	bool moved = pieceToMove->Move(end);
+
+	if (moved)
+	{
+		currentTurn = currentTurn == Color::White ? Color::Black : Color::White;
+	}
+	return moved;
 }
 
 std::string Board::ToString()

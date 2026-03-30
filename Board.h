@@ -10,7 +10,7 @@ class Board
 {
 private:
 	// turn count
-	// who's turn
+	Color currentTurn;
 
 	std::vector<Piece*> pieces;
 
