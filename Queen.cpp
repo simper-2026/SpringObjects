@@ -16,7 +16,11 @@ Queen::Queen(Color c)
 
 bool Queen::Move(Position target)
 {
-    return false;
+	if (_location.File != target.File) {
+		return false;
+	}
+	_location = target;
+    return true;
 }
 
 std::string Queen::ToString()

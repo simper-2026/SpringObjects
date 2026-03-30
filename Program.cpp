@@ -24,20 +24,24 @@ void PlayGame();
 
 int main() {
 	DevTests();
-	PlayGame();
+	//PlayGame();
 }
 
 void PlayGame() {
 	Board b;
-	cout << b.ToString();
-	// TODO: Tell whos turn
-	cout << "Where do you want to move? (e1 e2)";
-	string input;
-	getline(cin, input);
-	Position start = { input[0], input[1] - '0'};
-	Position end = { input[3], input[4] - '0'};
-	b.Move(start, end);
-	cout << b.ToString();
+
+	while (true) {
+		system("cls");
+
+		cout << b.ToString();
+		// TODO: Tell whos turn
+		cout << "Where do you want to move? (e1 e2)";
+		string input;
+		getline(cin, input);
+		Position start = { input[0], input[1] - '0' };
+		Position end = { input[3], input[4] - '0' };
+		b.Move(start, end);
+	}
 }
 
 void DevTests()
@@ -60,7 +64,6 @@ void DevTests()
 	}
 
 	b.Move(q1, q2);
-	//cout << b.ToString();
 	
 
 	bool whitKingTwice = b.Move(q2, {'f', 3});
@@ -70,7 +73,25 @@ void DevTests()
 		return;
 	}
 
+	
+
+	bool blackQueenMove = b.Move({ 'd', 8 }, { 'd', 6 });
+
+	if (!blackQueenMove) {
+		cout << "FAIL\n";
+		cout << "Black queen should move 2\n";
+		return;
+	}
+
+	bool whiteQueenInvalidMove = b.Move({ 'd', 1 }, { 'e', 6 });
+
+	if (whiteQueenInvalidMove) {
+		cout << "FAIL\n";
+		cout << "White Queen invalid step 2\n";
+		return;
+	}
 
 
+	cout << b.ToString();
 }
 
